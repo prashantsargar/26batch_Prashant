@@ -33,10 +33,10 @@ int main()
     }
 
     cout<<"\n After Sorting : ";
-    int ans[5] = sortByarray(arr);
-    for(int i=0;i<=5;i++)
+      sortByarray(arr);
+    for(int i=0;i<5;i++)
     {
-       cout<<"\n"<<ans[i];
+       cout<<"\n"<<arr[i];
     }
        
     return 0;
