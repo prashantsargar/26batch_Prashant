@@ -1,17 +1,6 @@
 /* Write a Menu Driven Program to edit Bank Account.
 Menu
-1. Open
-Account
-2. View
-Account
-3. deposit
-Amount
-4. Withdraw
-Amount
-5. View
-Balance
-6. Search
-Account 7. Exit */
+1.Open Account 2. View Account 3. deposit Amount 4. Withdraw Amount 5. View Balance 6. Search Account 7. Exit */
 
 #include<iostream>
 #include<string.h>
@@ -34,15 +23,15 @@ using namespace std;
      cout<<"\n Press 7 to exit";
  }
 
-  void account(int choice)
+  int account(int choice)
   {
       switch (choice)
       {
       case 1:
           {
-              cout<<"\n Enter account Holder Name : ";
+              std::cout<<"\n Enter account Holder Name : ";
               cin>>actname;
-              cout<<"\n Enter account Type : ";
+              std::cout<<"\n Enter account Type : ";
               cin>>acttype;
               cout<<"\n Enter account number : ";
               cin>>actnum;
@@ -58,36 +47,51 @@ using namespace std;
           break;
       case 3:
           {
+              double dipositamt;
+              cout<<"\n Enter amount to diposit: ";
+              cin>>dipositamt;
               cout<<"\n Amount diposited successfully...";
           }
           break;
       case 4:
           {
+              double withdrawamt;
+              cout<<"\n Enter amount to withdraw : ";
+              cin>>withdrawamt;
               cout<<"\n Amount withdrawal done successfully...";
           }
           break;
       case 5:
           {
-              cout<<"\n Your account balance = 50000";
+              double balance=50000;
+              cout<<"\n Your account balance : "<<balance;
           }
           break;
       case 6:
           {
+              char* actname[5]={"Prashant","Vynkatesh","Shubham","Shardul","Pranay"};
               char searchactname[20];
               cout<<"\n Enter account name to search : ";
               cin>>searchactname;
-              if(strcpy(searchactname,actname)==0)
-                cout<<searchactname<<"\n Account is exist...";
-              else
-                cout<<searchactname<<"\n Account is not exist...";
+              for(int i=0;i<5;i++)
+              {
+                  if(strcmp(searchactname,actname[i])==0)
+                    return 1;
+                  else
+                   return 0;
+              }
+              
           }
           break;
       case 7:
-          {
-              cout<<"\n Exit...";
-          }
+      {
+          cout<<"\n Exit...";
+      }
       
       default:
+      {
+          cout<<"\n Invalid Input...";
+      }
           break;
       }
   }
@@ -101,7 +105,15 @@ int main()
     cout<<"\n Enter your choice : ";
     cin>>choice;
 
-    account(choice);
+    int ans = account(choice);
+    if(ans==1)
+    {
+        cout<<"\n Account is exist...";
+    }
+    else if(ans==0)
+    {
+        cout<<"\n Account is dose not exist...";
+    }
 
     return 0;
 }
